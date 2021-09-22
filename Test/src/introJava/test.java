@@ -56,8 +56,6 @@ public class test {
 		System.out.println();
 		System.out.println("I am a canadian citizen because all of my cousins live there. I usually visit there three to four times a year.");
 		
-	}
+		}
 
 }
-
-# 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
