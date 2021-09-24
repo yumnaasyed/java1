@@ -14,12 +14,12 @@ public class Clock {
 	}
 	
 	public void tick() {
-		time += 1;
+		time = (time + 1) % 60;
 		
 	}
 	
 	public void displayTime() {
-		System.out.println(time%60);
+		System.out.println(time);
 		
 	}
 	
