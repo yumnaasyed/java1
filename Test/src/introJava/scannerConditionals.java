@@ -33,6 +33,7 @@ public class scannerConditionals {
 	}
 	
 	
+	
 	public void  mathOperators() {
 		
 		Scanner input = new Scanner(System.in);
@@ -75,6 +76,38 @@ public class scannerConditionals {
 	
 	
 	
+	public void football() {
+		
+		Scanner input = new Scanner(System.in);
+		
+		
+		System.out.println("enter a number of touchdowns: ");
+		int touchdowns = input.nextInt();
+		
+		System.out.println("enter a number of field goals: ");
+		int fieldGoals = input.nextInt();
+		
+		System.out.println("enter a total score: ");
+		int score = input.nextInt();
+		
+		
+		
+	}
+	
+	
+	public void greatestDigit() {
+		
+		Scanner input = new Scanner(System.in);
+		
+		
+		System.out.println("enter a number: ");
+		int num = input.nextInt();
+		
+		
+	}
+	
+	
+	
 	
 	public static void main(String[] args) {
 		
@@ -83,6 +116,10 @@ public class scannerConditionals {
 		runner.fourNumbers();
 		
 		runner.mathOperators();
+		
+		runner.football();
+		
+		runner.greatestDigit();
 
 	}
 	
