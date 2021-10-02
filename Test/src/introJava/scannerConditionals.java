@@ -91,8 +91,16 @@ public class scannerConditionals {
 		int score = input.nextInt();
 		
 		
+		int fullTouchdowns = touchdowns / 7;
+				
+		int fullFeildGoals = fieldGoals / 3;
+		
+		if () {
+			
+		}
 		
 	}
+	
 	
 	
 	public void greatestDigit() {
@@ -100,8 +108,31 @@ public class scannerConditionals {
 		Scanner input = new Scanner(System.in);
 		
 		
-		System.out.println("enter a number: ");
+		System.out.println("enter a 3 digit number: ");
 		int num = input.nextInt();
+		
+		int lastDigit = num % 10;
+		
+		int secondDigit = (num % 100) / 10;
+		
+		int firstDigit = (num/1000);
+		
+		
+		if (lastDigit > secondDigit && lastDigit > firstDigit) {
+			System.out.println(lastDigit);
+		}
+		
+		else if (secondDigit > lastDigit && secondDigit > firstDigit) {
+			System.out.println(secondDigit);
+		}
+			
+		else if (firstDigit > lastDigit && firstDigit > secondDigit) {
+			System.out.println(firstDigit);
+		}
+		
+		else {
+			System.out.println(lastDigit);
+		}
 		
 		
 	}
