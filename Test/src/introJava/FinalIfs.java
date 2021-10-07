@@ -93,9 +93,12 @@ public class FinalIfs {
 		}
 		
 		else if (sum < 65) {
-			System.out.println('A');
+			System.out.println('A');	
 		}
-	
+			
+		else {
+			System.out.println('Z');
+		}
 		
 	}
 	
