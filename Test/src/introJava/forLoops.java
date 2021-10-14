@@ -6,6 +6,8 @@ public class forLoops {
 	
 	private Scanner input = new Scanner(System.in);
 	
+	//definite finite
+	//linear
 	//easy
 	public void negToPos() {	
 		
@@ -18,6 +20,8 @@ public class forLoops {
 		
 	}
 	
+	//definite finite
+	//linear
 	//easy
 	public void hiTimes() {
 		
@@ -34,6 +38,8 @@ public class forLoops {
 			
 	}
 	
+	//indefinite
+	//linear
 	//easy
 	public void chooseNumber() {
 		
@@ -52,6 +58,8 @@ public class forLoops {
 		
 	}
 	
+	//indefinite
+	//linear
 	//medium
 	public void simpleGame() {
 		
@@ -70,7 +78,8 @@ public class forLoops {
 		
 	}
 	
-	
+	//definite finite
+	//linear
 	//medium
 	public void factorial() {
 		
@@ -86,6 +95,8 @@ public class forLoops {
 		System.out.println(count);
 	}
 	
+	//definite finite
+	//constant
 	//hard
 	public void lcm(int num1, int num2) {
 		
@@ -98,8 +109,6 @@ public class forLoops {
 			
 		}
 	}
-	
-	
 	
 	
 	public static void main(String[] args) {
