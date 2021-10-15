@@ -29,8 +29,12 @@ public class Pong extends JPanel implements KeyListener {
 	private final int BLOCK_WIDTH = 25, BLOCK_HEIGHT = 80;
 
 	
-	// your instance variables here, I've given you a few 
-	private boolean up1, down1, up2, down2; 		// booleans to keep track of paddle movement
+	// your instance variables here
+	
+	// key pressed/released variables
+	private boolean up1, down1, up2, down2;
+	
+	// artificial intelligence variable
 	private boolean solo = false;
 	
 	
