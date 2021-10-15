@@ -38,11 +38,12 @@ public class Pong extends JPanel implements KeyListener {
 	private int ballx = WIDTH/2;
 	private int bally = WIDTH/2;
 	
+	
 	// variables for ball speed in both directions
 	private int speedx = 1;
 	private int speedy = 2;
 	
-	
+
 	// variables for paddles locations
 	private int paddle1x = 0;
 	private int paddle1y = WIDTH/2;
@@ -64,15 +65,16 @@ public class Pong extends JPanel implements KeyListener {
 	private int block2y = WIDTH/2;
 	
 	// variable for block speed(y) because it only moves up and down
-	private int blockSpeed = 2;
+	private int blockSpeedy = 2;
+	
 	
 	
 	// moves the wall blocks
 	public void move_blocks() {
 		
 		// moves block 1 upwards and block 2 downwards
-		block1y -= blockSpeed;
-		block2y += blockSpeed;
+		block1y -= blockSpeedy;
+		block2y += blockSpeedy;
 		
 		
 		// bounces ball off of wall blocks
@@ -87,22 +89,21 @@ public class Pong extends JPanel implements KeyListener {
 		
 		// bounces wall block 1 off top of screen
 		if (block1y <= 0) {
-			blockSpeed *= -1;
+			blockSpeedy *= -1;
 		}			
 		// bounces wall block 1 off bottom of screen
 		else if (block1y >= (HEIGHT - BLOCK_HEIGHT)) {
-			blockSpeed *= -1;
+			blockSpeedy *= -1;
 		}
 		
 		// bounces wall block 2 off top of screen
 		if (block2y <= 0) {
-			blockSpeed *= -1;
+			blockSpeedy *= -1;
 		}	
 		// bounces wall block 2 off bottom of screen
 		else if (block2y >= (HEIGHT - BLOCK_HEIGHT)) {
-			blockSpeed *= -1;
+			blockSpeedy *= -1;
 		}
-		
 	}
 	
 	// this method moves the ball at each timestep
@@ -111,7 +112,7 @@ public class Pong extends JPanel implements KeyListener {
 		// increases both coordinates of the ball by the speed
 		bally += speedy;
 		ballx += speedx;
-		
+	
 	}
 	
 	// this method moves the paddles at each timestep
@@ -137,11 +138,15 @@ public class Pong extends JPanel implements KeyListener {
 		
 		// paddle 2 turns into one player mode by following y coordinate of ball
 		if (solo == true) {
-			paddle2y += PADDLE_SPEED;
-			paddle2y = bally;
+			// starts moving down if ball is below paddle
+			if (paddle2y < bally) {
+				paddle2y += PADDLE_SPEED;
+			}
+			// starts moving up if ball if above paddle
+			if (paddle2y > bally) {
+				paddle2y -= PADDLE_SPEED;
+			}
 		}
-
-	
 	}
 	
 	// this method checks if there are any bounces to take care of,
@@ -178,8 +183,6 @@ public class Pong extends JPanel implements KeyListener {
 		else if (ballx >= (paddle2x - PADDLE_WIDTH) && bally >= paddle2y && bally <= paddle2y + PADDLE_HEIGHT) {
 			speedx = speedx * -1;
 		}
-		
-		
 	}
 	
 
@@ -188,15 +191,15 @@ public class Pong extends JPanel implements KeyListener {
 	public void paint(Graphics g) {
 		
 		// background color is gray
-		g.setColor(Color.LIGHT_GRAY);
+		g.setColor(new Color(255,192,203));
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
-
+		
 		// draw the ball - where do we want to draw it??
-		g.setColor(new Color(255,192,203));
+		g.setColor(new Color(255,105,180));
 		g.drawOval(ballx, bally, DIAM, DIAM);
 		g.fillOval(ballx, bally, DIAM, DIAM);
-				
+		
 		
 		// draws/fills the paddles
 		g.setColor(new Color(255,105,180));
@@ -209,11 +212,11 @@ public class Pong extends JPanel implements KeyListener {
 		
 		
 		// draws/fills the wall blocks
-		g.setColor(new Color(255,105,180));
+		g.setColor(new Color(255,75,75));
 		g.drawRect(block1x, block1y, BLOCK_WIDTH, BLOCK_HEIGHT);	
 		g.fillRect(block1x, block1y, BLOCK_WIDTH, BLOCK_HEIGHT);
 				
-		g.setColor(new Color(255,105,180));
+		g.setColor(new Color(255,75,75));
 		g.fillRect(block2x, block2y, BLOCK_WIDTH, BLOCK_HEIGHT);
 		g.fillRect(block2x, block2y, BLOCK_WIDTH, BLOCK_HEIGHT);
 		
@@ -221,12 +224,18 @@ public class Pong extends JPanel implements KeyListener {
 		// writes the score of the game - you just need to fill the scores in
 		Font f = new Font("Arial", Font.BOLD, 14);
 		g.setFont(f);
-		g.setColor(new Color(255, 16, 240));
+		g.setColor(new Color(255,75,75));
 		g.drawString("P1 Score: "+ p1score, WIDTH/5, 20);
 		g.drawString("P2 Score: " + p2score, WIDTH*3/5, 20);
+		
+		// writes directions for both paddles
+		Font directions = new Font("Arial", Font.BOLD, 14);
+		g.setFont(directions);
+		g.setColor(new Color(255,75,75));
+		g.drawString("up and down arrows", WIDTH/6, 40);
+		g.drawString("'w' and 's' keys", WIDTH*3/5, 40);
 	}
 
-	
 	
 	// defines what we want to happen if a keyboard button has 
 	// been pressed - you need to complete this
@@ -255,7 +264,6 @@ public class Pong extends JPanel implements KeyListener {
 		// turn 2-player mode on
 		if (e.getKeyChar() == '2')
 			solo = false;
-
 	}
 
 	// defines what we want to happen if a keyboard button
@@ -276,8 +284,8 @@ public class Pong extends JPanel implements KeyListener {
 		
 		if (e.getKeyChar() == 's')
 			down2 = false;
-		
 	}
+	
 	
 	// restarts the game, including scores
 	public void restart() {
@@ -299,8 +307,6 @@ public class Pong extends JPanel implements KeyListener {
 		p2score = 0;
 		
 	}
-
-	
 
 	
 	
