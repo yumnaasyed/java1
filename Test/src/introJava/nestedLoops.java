@@ -24,7 +24,7 @@ public class nestedLoops {
 		}
 	}
 	
-	
+	// n^2 run time quadratic
 	public void prime(int x) {
 
 		for (int num = 2; num <= x; num++) {
@@ -44,7 +44,7 @@ public class nestedLoops {
 	}
 	
 	
-	// constant
+	// constant (n^2)
 	public void stars(int n) {
 		
 		for (int row = 0; row < n; row++) {
