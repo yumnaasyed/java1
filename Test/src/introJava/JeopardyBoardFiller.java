@@ -48,6 +48,7 @@ public class JeopardyBoardFiller {
 		
 		// draws boxes across and down and writes text inside each with increasing points (based on NUMQUESTIONS and NUMCATEGORIES)
 		for (int categories = 0; categories <= NUMCATEGORIES; categories++) {
+			
 			for (int questions = 0; questions <= NUMQUESTIONS; questions++) {
 				
 				// sets new color(dark pink) for the boxes and draws each box
