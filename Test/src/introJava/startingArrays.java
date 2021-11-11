@@ -24,7 +24,7 @@ public class startingArrays {
 		display(newArr);
 	}
 	
-	// why isn't this working?
+	
 	public static void swap(int[] swapArr) {
 		
 		int first = swapArr[0];
@@ -61,15 +61,15 @@ public class startingArrays {
 	
 	public static void main(String[] args) {
 		
-		//int[] myArr = new int[6];
-		//display(myArr);
+		int[] myArr = new int[6];
+		display(myArr);
 		
-		//oneToN(10);
+		oneToN(10);
 		
-		//userArray(7);
+		userArray(7);
 		
-		//int[] swapArr = {5, 6, 7, 8, 9, 10};
-		//swap(swapArr);
+		int[] swapArr = {5, 6, 7, 8, 9, 10};
+		swap(swapArr);
 		
 		int[] revArr = {6, 5, 4, 3, 2, 1, 0};
 		reverse(revArr);
