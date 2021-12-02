@@ -60,13 +60,11 @@ public class warmingBackUpArrays {
 	}
 	
 	//medium
-	//not working
 	public static void trim(int[] arr) {
 		
 		int[] newArr = new int[arr.length-2];
 		int maxI = arr[0];
 		int minI = arr[0];
-		//int error = 0;
 		
 		for (int i = 1; i < arr.length; i++ ) {
 			if (arr[i] > maxI) {
@@ -76,9 +74,11 @@ public class warmingBackUpArrays {
 				minI = arr[i];
 			}
 		}
-		for (int i = 0; i < newArr.length; i++) {
+		for (int i = 0, j = 0; i < arr.length; i++) {
+			
 			if (arr[i] != maxI && arr[i] != minI) {
-				newArr[i] = arr[i];
+				newArr[j] = arr[i];
+				j++;
 			}
 		}
 		System.out.println(Arrays.toString(newArr));
@@ -128,7 +128,7 @@ public class warmingBackUpArrays {
 		
 		//risingAvg(new int[] {4, 6, 2, 12});
 		
-		//not working //trim(new int[] {18, 7, 2, 8, 15});
+		//trim(new int[] {18, 7, 2, 8, 15});
 		
 		//dotProduct(new int[] {5, 3, 1}, new int[] {8, 4, 7});
 		
