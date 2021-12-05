@@ -113,6 +113,10 @@ public class WhackAMoleFiller {
     	// resets all moles to not showing
     	showing = new boolean[NUMMOLES];
     	
+    	for(int i = 0; i < NUMAPPEARING; i++) {
+    		showing[(int)(Math.random()*10)] = true;
+    	}
+    	
     }
     
     // reset the game
