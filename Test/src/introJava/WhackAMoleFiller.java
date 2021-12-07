@@ -1,11 +1,14 @@
 package introJava;
 
+import java.awt.Color;
+
 //Yumna Syed
 //Whack-A-Mole Project
 
 // Filler code for Whack a Mole by Mr. Friedman
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -29,18 +32,25 @@ public class WhackAMoleFiller {
 	// size of the display area
     private int windowWidth = 800, windowHeight = 600, textHeight = 35; 
     
-    // all images used in game (mole, background, dirt)
-    private Image moleImg, bgImg, dirtImg;
+    // all images used in game (mole, background, dirt, bomb, explosion)
+    private Image moleImg, bgImg, dirtImg, bombImg, expImg;
 
-    // constants for the number of moles, number of moles appearing at a time, and the 
-    // time gap between new moles popping up (in milliseconds)
-    private final int NUMMOLES = 10, NUMAPPEARING = 2, TIMESTEP = 2000;
+    // constants for the number of moles, number of moles and bombs appearing at a time, and the 
+    // time gap between new moles and bombs popping up (in milliseconds)
+    private final int NUMMOLES = 10, NUMAPPEARING = 2, TIMESTEP = 1000;
     
-    // locations of the moles
+    // locations of the moles and dirt
     private int[] x, y;
+    // locations of bombs
+    private int[] bx, by;
     
     // keeps track of which moles are popped up
     private boolean[] showing;
+    // keeps track of which bomb shows on screen
+    private boolean[] bombShowing;
+    
+    // keeps track of whether user has lost
+    private boolean lost = false;
     
     // keeps track of score
     private int score;
@@ -51,60 +61,106 @@ public class WhackAMoleFiller {
     //dirt dimensions
     private int dirtHeight = 50;
     private int dirtWidth = 50;
+    // bomb dimensions
+    private int bombHeight = 50;
+    private int bombWidth = 50;
+    
     
     
     public void setup() {
+    	
     	// loads mole image
 		moleImg = Toolkit.getDefaultToolkit().getImage("moleWhackAMole-removebg-preview.png");
 		// loads background image
 		bgImg = Toolkit.getDefaultToolkit().getImage("backgroundWhackAMole.jpeg");
 		// loads dirt image
 		dirtImg = Toolkit.getDefaultToolkit().getImage("moundComp-removebg-preview.png");
-		
+		// loads mouse image
+		bombImg = Toolkit.getDefaultToolkit().getImage("bombImage-removebg-preview.png");
+		// loads explosion image
+		expImg = Toolkit.getDefaultToolkit().getImage("expBackground.jpg");
 		
 		// defines empty arrays for x and y coordinates of dirt and moles
 		x = new int[NUMMOLES];
 		y = new int[NUMMOLES];
+		// defines empty arrays for x and y coordinates of bomb
+		bx = new int[NUMMOLES];
+		by = new int[NUMMOLES];
+		
 		// defines the entire array as false so no moles show
 		showing = new boolean[NUMMOLES];
+		// defines entire bomb array as false so none show
+		bombShowing = new boolean[NUMMOLES];
 		
-		// assigns random numbers in range of grass for coordinates of moles and dirt
+		
+		// assigns random numbers in range of grass for coordinates of moles and dirt and bomb
 		for (int i = 0; i < NUMMOLES; i++) {
+			
+			// random coordinates for moles and dirt
 			x[i] = (int)(Math.random()*(windowWidth-moleWidth));
 			y[i] = (int)((Math.random()*((windowHeight*2/3)-(moleHeight+dirtHeight)))+windowHeight/3);
 			
+			// random coordinates for bomb
+			bx[i] = (int)(Math.random()*(windowWidth-moleWidth));
+			by[i] = (int)((Math.random()*((windowHeight*2/3)-(moleHeight+dirtHeight)))+windowHeight/3);
 		}
     }
 
     public void draw(Graphics g) {
     	
-    	// draws the background image at 0,0 with a size that will cover the entire display window
-        g.drawImage(bgImg, 0, 0, windowWidth, windowHeight, null);
-        
-        // draws moles if their index is true, draws dirt always
-        for (int i = 0; i < NUMMOLES; i++) {
-        	if (showing[i] == true) {
-        		g.drawImage(moleImg, x[i], y[i], moleWidth, moleHeight, null);
-        	}
-        	g.drawImage(dirtImg, x[i], y[i]+dirtHeight, dirtWidth, dirtHeight, null);
-        }
-        
-        
+    	// gets font and color and size
+    	Font f = new Font("Rockwell", Font.BOLD, 50);
+		g.setFont(f);
+		g.setColor(new Color(255,75,75));
+    	
+    	// draws images if the game is still playing
+    	if(!lost) {
+	    	// draws the background image at 0,0 with a size that will cover the entire display window
+	        g.drawImage(bgImg, 0, 0, windowWidth, windowHeight, null);
+	        
+	        // draws moles and/or bomb if their index is true, draws dirt always
+	        for (int i = 0; i < NUMMOLES; i++) {
+	        	// draws mole
+	        	if (showing[i] == true) {
+	        		g.drawImage(moleImg, x[i], y[i], moleWidth, moleHeight, null);
+	        	}
+	        	// draws bomb
+	        	if (bombShowing[i] == true) {
+	        		g.drawImage(bombImg, bx[i], by[i], bombWidth, bombHeight, null);
+	        	}
+	        	// draws dirt
+	        	g.drawImage(dirtImg, x[i], y[i] + dirtHeight, dirtWidth, dirtHeight, null);
+	        }
+    	}
+    	// draws explosion and writes you lost if user lost game
+    	else {
+    		g.drawImage(expImg, 0, 0, windowWidth, windowHeight, null);
+    		g.drawString("You Lost!", windowWidth/3, windowHeight/5);
+    	}
     }
 
 
     // what you want to happen when the mouse is clicked
     public void click(int mouseX, int mouseY) {
     	
-    	// your code here
-    	
+    	// if the mouse clicks the moles or bomb when they appear
     	for (int i = 0; i < NUMMOLES; i++) {
+    		
+    		// decreases score by 200 and removes bomb from screen when bomb is clicked
+    		if (mouseX > bx[i] && mouseX < bx[i] + bombWidth && mouseY > by[i] && mouseY < by[i] + bombHeight && bombShowing[i] == true) {
+    			score -= 200;
+    			bombShowing[i] = false;
+    		}
+    		// increases score by 100 and removes mole from screen when mole clicked
     		if (mouseX > x[i] && mouseX < x[i] + moleWidth && mouseY > y[i] && mouseY < y[i] + moleHeight + dirtHeight && showing[i] == true) {
     			score += 100;
     			showing[i] = false;
     		}
+    		// if score is less that 0 you lose
+    		if (score < 0) {
+    			lost = true;
+    		}
     	}
-  
     }
     
     // what you want to happen when the time for the current round ends
@@ -112,9 +168,16 @@ public class WhackAMoleFiller {
     	
     	// resets all moles to not showing
     	showing = new boolean[NUMMOLES];
+    	// resets bombs to not showing
+    	bombShowing = new boolean[NUMMOLES];
     	
-    	for(int i = 0; i < NUMAPPEARING; i++) {
+    	// sets two random indexes to true so two moles appear
+    	for (int i = 0; i < NUMAPPEARING; i++) {
     		showing[(int)(Math.random()*10)] = true;
+    	}
+    	// sets half the number of moles appearing to true so that many bombs appear
+    	for (int i = 0; i < NUMAPPEARING/2; i++) {
+    		bombShowing[(int)(Math.random()*10)] = true;
     	}
     	
     }
@@ -122,7 +185,13 @@ public class WhackAMoleFiller {
     // reset the game
     public void reset() {
     	
-    	// your code here
+    	// resets arrays
+    	setup();
+    	// resets score
+    	score = 0;
+    	// resets to the user hasn't lost
+    	lost = false;
+    	
     }
 
     
