@@ -34,6 +34,14 @@ public class IntroToStrings {
 		}
 	}
 	
+	public static void box(String word) {
+		
+		for (int i = 0; i < word.length(); i++) {
+				
+				System.out.println(word.substring(i) + word.substring(0, i));
+		}
+	}
+	
 	
 	
 	public static void main(String[] args) {
@@ -47,6 +55,8 @@ public class IntroToStrings {
 		//contains("world", "orld");
 		
 		//backwards("hello");
+		
+		//box("hello");
 		
 		
 		
