@@ -15,17 +15,7 @@ public class moreStrings {
 			System.out.println(w1.contains(w2.charAt(i)+ ""));
 		}
 	}
-	
-	
-	public static void wordCount(String words) {
 		
-		String[] w = words.split(" ");
-		
-		System.out.print(w);
-		
-		
-	}
-	
 	
 	public static void noE (String words) {
 		
@@ -66,6 +56,6 @@ public class moreStrings {
 		
 		//palindrome("ava");
 		
-		arrayElement("AP CS is for nerds");
+		//arrayElement("AP CS is for nerds");
 	}
 }
