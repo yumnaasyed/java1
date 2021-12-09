@@ -4,8 +4,8 @@ import java.awt.Color;
 
 //Yumna Syed
 //Whack-A-Mole Project
-
 // Filler code for Whack a Mole by Mr. Friedman
+// extra feature is bombs which deduct points if clicked/losing feature is score is below 0
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -37,7 +37,7 @@ public class WhackAMoleFiller {
 
     // constants for the number of moles, number of moles and bombs appearing at a time, and the 
     // time gap between new moles and bombs popping up (in milliseconds)
-    private final int NUMMOLES = 10, NUMAPPEARING = 2, TIMESTEP = 1000;
+    private final int NUMMOLES = 10, NUMAPPEARING = 2, TIMESTEP = 1200;
     
     // locations of the moles and dirt
     private int[] x, y;
@@ -66,7 +66,7 @@ public class WhackAMoleFiller {
     private int bombWidth = 50;
     
     
-    
+    // loads and defines variables
     public void setup() {
     	
     	// loads mole image
@@ -87,10 +87,8 @@ public class WhackAMoleFiller {
 		bx = new int[NUMMOLES];
 		by = new int[NUMMOLES];
 		
-		// defines the entire array as false so no moles show
-		showing = new boolean[NUMMOLES];
-		// defines entire bomb array as false so none show
-		bombShowing = new boolean[NUMMOLES];
+		// runs the time advance method
+		timeAdvance();
 		
 		
 		// assigns random numbers in range of grass for coordinates of moles and dirt and bomb
@@ -106,6 +104,7 @@ public class WhackAMoleFiller {
 		}
     }
 
+    //draws all images/text
     public void draw(Graphics g) {
     	
     	// gets font and color and size
@@ -146,9 +145,9 @@ public class WhackAMoleFiller {
     	// if the mouse clicks the moles or bomb when they appear
     	for (int i = 0; i < NUMMOLES; i++) {
     		
-    		// decreases score by 200 and removes bomb from screen when bomb is clicked
+    		// decreases score by 1000 and removes bomb from screen when bomb is clicked
     		if (mouseX > bx[i] && mouseX < bx[i] + bombWidth && mouseY > by[i] && mouseY < by[i] + bombHeight && bombShowing[i] == true) {
-    			score -= 200;
+    			score -= 1000;
     			bombShowing[i] = false;
     		}
     		// increases score by 100 and removes mole from screen when mole clicked
@@ -179,7 +178,6 @@ public class WhackAMoleFiller {
     	for (int i = 0; i < NUMAPPEARING/2; i++) {
     		bombShowing[(int)(Math.random()*10)] = true;
     	}
-    	
     }
     
     // reset the game
@@ -189,9 +187,8 @@ public class WhackAMoleFiller {
     	setup();
     	// resets score
     	score = 0;
-    	// resets to the user hasn't lost
+    	// resets to say the user hasn't lost
     	lost = false;
-    	
     }
 
     
