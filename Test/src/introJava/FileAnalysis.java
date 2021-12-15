@@ -91,6 +91,8 @@ public class FileAnalysis {
 	// returns the most common word in the file
 	private String mostCommonWord() {
 		
+		// String[] words = content.split(" |\n|--");
+		
 
 	}
 	
@@ -104,15 +106,6 @@ public class FileAnalysis {
 	// returns the longest sentence in the file
 	private String longestSentence() {
 		
-		//String[] sentence = content.split(".");
-		//String longest = "";
-		
-		//for (int i = 0; i < sentence.length; i++) {
-			//if (sentence[i].length() > longest.length()) {
-				//longest = sentence[i];
-			//}
-		//}
-		//return longest;
 	}
 	
 	// returns the percent of characters in the file that are vowels.
