@@ -67,11 +67,11 @@ public class finalArrayProblems {
 	
 	public static void main(String[] args) {
 		
-		//indexSum(new double[] {5.8, 3.1, 2.5});
+		indexSum(new double[] {5.8, 3.1, 2.5});
 		
-		//adjacentSum(new int[] {1, 5, 2, 4, 3}, 14);
+		adjacentSum(new int[] {1, 5, 2, 4, 3}, 14);
 		
-		//addString(new char[] {'h', 'i', '!', 'H', 'e', 'l', 'L', 'o', '?', 'y'});
+		addString(new char[] {'h', 'i', '!', 'H', 'e', 'l', 'L', 'o', '?', 'y'});
 		
 		oftenChar(new char[] {'h', 'k', 'h', 'u', 'b', 'e', 'k', 'u', 'u'});
 		

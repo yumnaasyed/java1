@@ -32,7 +32,6 @@ public class finalStrings {
 			}
 		}
 		System.out.println(longest);
-		
 	}
 	
 	

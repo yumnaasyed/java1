@@ -111,17 +111,20 @@ public class forLoops {
 	}
 	
 	
+	
+	
+	
 	public static void main(String[] args) {
 		
 	
 		forLoops runner = new forLoops();
 		
-		runner.negToPos();
-		runner.hiTimes();
-		runner.simpleGame();
-		runner.factorial();
-		runner.chooseNumber();
-		runner.lcm(6,4);
+		//runner.negToPos();
+		//runner.hiTimes();
+		//runner.simpleGame();
+		//runner.factorial();
+		//runner.chooseNumber();
+		//runner.lcm(6,4);
 
 	}
 	
