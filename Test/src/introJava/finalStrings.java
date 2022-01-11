@@ -14,10 +14,10 @@ public class finalStrings {
 		
 		for (int i = 0; i < str.length(); i++) {
 			if (str.charAt(i) == letter) {
-				System.out.print('$');;
+				System.out.println('$');;
 			}
 			else {
-			System.out.print(str.charAt(i));
+			System.out.println(str.charAt(i));
 			}
 		}	
 	}
@@ -41,7 +41,7 @@ public class finalStrings {
 		
 		iterate("hello", 'l');
 		
-		array(new String[] {"hello", "hi", "bye"});
+		array(new String[] {"hello", "hello", "bye"});
 
 	}
 	
