@@ -59,9 +59,9 @@ public class moreNestedLoops {
 		
 		moreNestedLoops runner = new moreNestedLoops();
 		
-		runner.loopingBox(5);
+		//runner.loopingBox(5);
 		runner.triangleX(5);
-		runner.diamond(25);
+		//runner.diamond(25);
 	
 
 	}
