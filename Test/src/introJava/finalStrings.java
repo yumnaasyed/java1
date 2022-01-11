@@ -14,10 +14,10 @@ public class finalStrings {
 		
 		for (int i = 0; i < str.length(); i++) {
 			if (str.charAt(i) == letter) {
-				System.out.println('$');;
+				System.out.print('$');;
 			}
 			else {
-			System.out.println(str.charAt(i));
+			System.out.print(str.charAt(i));
 			}
 		}	
 	}
