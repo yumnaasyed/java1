@@ -4,15 +4,16 @@ import java.util.Arrays;
 
 public class intro2DArr {
 	
-	// 6
-	// 1
-	// out of bounds
-	// 3
-	// k
-	// out of bounds
-	// 105
-	// k
-	// {7, 6}
+	//a. 6
+	//b. 1
+	//c. out of bounds
+	//d. 3
+	//e. k
+	//f. out of bounds
+	//g. 105
+	//h. k
+	//i. {7, 6}
+	
 	
 	public static void integer(int n) {
 		
@@ -20,7 +21,7 @@ public class intro2DArr {
 		
 		for (int i = 0; i < arr.length; i ++) {
 			for (int j = 0; j < arr.length; j++) {
-				arr[i][j] = i*n + j;
+				arr[i][j] = i*n+j;
 			}
 		}
 		
@@ -54,7 +55,6 @@ public class intro2DArr {
 		
 		sixInt(1, 2, 3, 4, 5, 6);
 		
-			
 	}
 	
 }
