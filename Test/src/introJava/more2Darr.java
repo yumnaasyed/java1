@@ -10,13 +10,6 @@ public class more2Darr {
 		}
 	}
 	
-	//public static void display2(int[] arr) {
-		//for (int[] row: arr) {
-			//System.out.println((row));
-		//}
-	//}
-	
-	
 	public static int[][] mByN(int m, int n) {
 		
 		int[][] newArr = new int[n][m];
@@ -70,6 +63,8 @@ public class more2Darr {
 			}
 		}
 		return sum;
+		
+		
 	}
 	
 	
