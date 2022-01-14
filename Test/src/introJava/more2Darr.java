@@ -102,7 +102,6 @@ public class more2Darr {
 		}
 		
 		return true;
-		
 	}
 	
 	public static int sumRow(int rowNum, int[][] arr) {
