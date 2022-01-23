@@ -62,7 +62,26 @@ public class PhotoshopFiller extends Component {
     public void flip(boolean horizontally) {
         outputName = (horizontally?"h":"v") + "_flipped_" + outputName;
         
-        // your code here
+        
+        if (horizontally) {
+        	
+        	for (int i = 0; i < pixels.length; i++) {
+        		for (int j = 0; j < pixels[i].length/2; j++) {
+        			Color temp = pixels[i][j];
+        			pixels[i][j] = pixels[i][pixels[i].length - j -1];
+        			pixels[i][pixels[i].length - j -1] = temp;		
+        		}
+        	}
+        }
+        
+        else {
+        	
+        	for (int i = 0; i < pixels.length/2; i++) {
+        		Color[] temp = pixels[i];
+        		pixels[i] = pixels[pixels.length - i - 1];
+        		pixels[pixels.length - i - 1] = temp;
+        	}
+        }
     }
     
     // negates an image
@@ -81,7 +100,6 @@ public class PhotoshopFiller extends Component {
         		int b = 255 - pixels[i][j].getBlue();
         		
         		pixels[i][j] = new Color(r, g, b);
-        		
         	}
         	
         }
@@ -101,6 +119,18 @@ public class PhotoshopFiller extends Component {
         outputName = "simplified_" + outputName;
         
         // your code here
+        
+        for (int i = 0; i < pixels.length; i++) {
+        	for (int j = 0; j < pixels[i].length; j++) {
+        		Color closest = colorList[0];
+        		for (int z = 1; z < colorList.length; z++) {
+        			if(distance(pixels[i][j], colorList[z]) < distance(pixels[i][j], colorList[z-1])) {
+        				closest = colorList[z];
+        			}
+        		}
+        		pixels[i][j] = closest;
+        	}
+        }
          
     }
     
@@ -109,7 +139,7 @@ public class PhotoshopFiller extends Component {
     // use the 3d distance formula to calculate
     public double distance(Color c1, Color c2) {
     	
-    		return 0;	// fix this
+    		return Math.sqrt((c2.getRed() - c1.getRed())*(c2.getRed() - c1.getRed()) + (c2.getGreen() - c1.getGreen())*(c2.getGreen() - c1.getGreen()) + (c2.getBlue() - c1.getBlue())*(c2.getBlue() - c1.getBlue()));
     }
     
     // this blurs the image
@@ -142,8 +172,8 @@ public class PhotoshopFiller extends Component {
 
     public void run() {
     	JFileChooser fc = new JFileChooser();
-		File workingDirectory = new File(System.getProperty("user.dir")+System.getProperty("file.separator")+ "Images");
-		fc.setCurrentDirectory(workingDirectory);
+//		File workingDirectory = new File(System.getProperty("user.dir")+System.getProperty("file.separator")+ "Images");
+//		fc.setCurrentDirectory(workingDirectory);
 		fc.showOpenDialog(null);
 		File my_file = fc.getSelectedFile();
 		if (my_file == null)
