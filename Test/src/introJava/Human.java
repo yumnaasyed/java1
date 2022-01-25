@@ -53,18 +53,19 @@ public class Human {
 	
 	
 	
-	
 	public static void main(String[] args) {
 		
 		Human Yumna = new Human(20, 6, "Yumna", 100);
 		
-		System.out.println(Yumna.canVote(2024));
+		Human Ryan = new Human(17, 10, "Ryan", 150);
+		
+		System.out.println(Ryan.canVote(2024));
 		
 		Yumna.eat(100);
 		
-		Yumna.getOlder();
+		//Ryan.getOlder();
 		
-		System.out.print(Yumna);
+		System.out.print(Ryan);
 		
 	}
 	
