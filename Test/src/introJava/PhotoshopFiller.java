@@ -1,7 +1,11 @@
 package introJava;
+// Yumna Syed
+// 1/28/22
+// help from Mr. Friedman
 // Photoshop program that can run several manipulations on 
 // an image
 // filler code by Mr. David
+// extra features: black and white filter, crop method
 
 import java.awt.Color;
 import java.awt.Component;
@@ -81,6 +85,7 @@ public class PhotoshopFiller extends Component {
         	
         	// first for loop to go down column
         	for (int i = 0; i < pixels.length; i++) {
+        		
         		// for loop to go halfway across the image
         		for (int j = 0; j < pixels[i].length/2; j++) {
         			
@@ -179,40 +184,52 @@ public class PhotoshopFiller extends Component {
         		pixels[i][j] = closest;
         	}
         }
-         
     }
     
     // optional helper method (recommended) that finds the 'distance' 
     // between two colors.
     // use the 3d distance formula to calculate
     public double distance(Color c1, Color c2) {
-    	
-    		return Math.sqrt((c2.getRed() - c1.getRed())*(c2.getRed() - c1.getRed()) + (c2.getGreen() - c1.getGreen())*(c2.getGreen() - c1.getGreen()) + (c2.getBlue() - c1.getBlue())*(c2.getBlue() - c1.getBlue()));
+    		
+    	// 3d distance formula
+    	return Math.sqrt((c2.getRed() - c1.getRed())*(c2.getRed() - c1.getRed()) + (c2.getGreen() - c1.getGreen())*(c2.getGreen() - c1.getGreen()) + (c2.getBlue() - c1.getBlue())*(c2.getBlue() - c1.getBlue()));
     }
     
     // this blurs the image
     // to do this: at each pixel, sum the 8 surrounding pixels' rgb values 
     // with the current pixel's own rgb value. 
     // divide this sum by 9, and set it as the rgb value for the blurred image
+    // surrounding pixels indeces:
+ 	// (i, j) -> (i-1, j) (i+1, j) (i, j-1) (i, j+1) (i-1, j+1) (i+1, j+1) (i-1, j-1) (i+1, j-1)
     public void blur() {
 		outputName = "blurred_" + outputName;
 		
 		// two for loops to go through each pixel except the bordering pixels
 		for (int i = 1; i < pixels.length-1; i++) {
+			
 			for (int j = 1; j < pixels[i].length-1; j++) {
 				
+				// variables to keep track of sum of each color of pixels around current pixel
+				// red
 				int rSum = 0;
+				// green
 				int gSum = 0;
+				// blue
 				int bSum = 0;
 				
+				// adds sum of each color of each pixel surrounding current pixel and current pixel's color
+				// red
 				rSum += pixels[i][j].getRed() + pixels[i-1][j].getRed() + pixels[i+1][j].getRed() + pixels[i][j-1].getRed() + pixels[i][j+1].getRed() + pixels[i+1][j+1].getRed() + pixels[i-1][j-1].getRed() + pixels[i-1][j+1].getRed() + pixels[i+1][j-1].getRed();
+				// green
 				gSum += pixels[i][j].getGreen() + pixels[i-1][j].getGreen() + pixels[i+1][j].getGreen() + pixels[i][j-1].getGreen() + pixels[i][j+1].getGreen() + pixels[i+1][j+1].getGreen() + pixels[i-1][j-1].getGreen() + pixels[i-1][j+1].getGreen() + pixels[i+1][j-1].getGreen();
+				// blue
 				bSum += pixels[i][j].getBlue() + pixels[i-1][j].getBlue() + pixels[i+1][j].getBlue() + pixels[i][j-1].getBlue() + pixels[i][j+1].getBlue() + pixels[i+1][j+1].getBlue() + pixels[i-1][j-1].getBlue() + pixels[i-1][j+1].getBlue() + pixels[i+1][j-1].getBlue();
 				
+				
+				// changes the current pixels red, green and blue color to the average of the sum of surrounding pixel's color
 				pixels[i][j] = new Color(rSum/9, gSum/9, bSum/9);
 			}
 		}
-		// (i, j) -> (i-1, j) (i+1, j) (i, j-1) (i, j+1) (i-1, j+1) (i+1, j+1) (i-1, j-1) (i+1, j-1)
 	}
     
     // this highlights the edges in the image, turning everything else black. 
@@ -222,26 +239,37 @@ public class PhotoshopFiller extends Component {
     public void edge() {
         outputName = "edged_" + outputName;
 
-        // your code here
-        
+        // creates 2d array size of image full of nulls
         Color[][] temp = new Color[pixels.length][pixels[0].length];
         
+        // two for loops to go through each pixel except the bordering pixels
         for (int i = 1; i < pixels.length-1; i++) {
+        	
 			for (int j = 1; j < pixels[i].length-1; j++) {
 				
+				// tracks sum of colors of pixels surrounding current pixel
+				// red
 				int rSum = 0;
+				// green
 				int gSum = 0;
+				// blue
 				int bSum = 0;
 				
+				// adds sum of each color of each pixel surrounding current pixel
+				// red
 				rSum += pixels[i-1][j].getRed() + pixels[i+1][j].getRed() + pixels[i][j-1].getRed() + pixels[i][j+1].getRed() + pixels[i+1][j+1].getRed() + pixels[i-1][j-1].getRed() + pixels[i-1][j+1].getRed() + pixels[i+1][j-1].getRed();
+				// green
 				gSum += pixels[i-1][j].getGreen() + pixels[i+1][j].getGreen() + pixels[i][j-1].getGreen() + pixels[i][j+1].getGreen() + pixels[i+1][j+1].getGreen() + pixels[i-1][j-1].getGreen() + pixels[i-1][j+1].getGreen() + pixels[i+1][j-1].getGreen();
+				// blue
 				bSum += pixels[i-1][j].getBlue() + pixels[i+1][j].getBlue() + pixels[i][j-1].getBlue() + pixels[i][j+1].getBlue() + pixels[i+1][j+1].getBlue() + pixels[i-1][j-1].getBlue() + pixels[i-1][j+1].getBlue() + pixels[i+1][j-1].getBlue();
 				
-			
-				
-				rSum = pixels[i][j].getRed()*8 - rSum;
-				gSum = pixels[i][j].getGreen()*8 - gSum;
-				bSum = pixels[i][j].getBlue()*8 - bSum;
+				// subtracts the sum of surrounding pixels from the current pixel's RGB value times 8
+				// red
+				rSum = pixels[i][j].getRed()*8 - (rSum);
+				// green
+				gSum = pixels[i][j].getGreen()*8 - (gSum);
+				// blue
+				bSum = pixels[i][j].getBlue()*8 - (bSum);
 				
 				// if red value is over 255 after adding brightness value, make it 255
         		if (rSum > 255) rSum = 255;
@@ -251,30 +279,100 @@ public class PhotoshopFiller extends Component {
         		// if green value is over 255 after adding brightness value, make it 255
         		if (gSum > 255) gSum = 255;
         		// if green value is less than 0 after adding negative number, make it 0
-        		else if (gSum < 0) gSum = 255;
+        		else if (gSum < 0) gSum = 0;
         		
         		// if blue value is over 255 after adding brightness value, make it 255
         		if (bSum > 255) bSum = 255;
         		// if blue value is less than 0 after adding negative number, make it 0
         		else if (bSum < 0) bSum = 0;
 				
-        		
+        		// sets the temp 2d array's index to the new RGB values from the image's same index
 				temp[i][j] = new Color(rSum, gSum, bSum);
 			}
-        }
-        
-
+        } 
+        // sets the temp image to the original image
         pixels = temp;
         
+        // makes the bordering pixel's colors black instead of null
+        
+        // goes across the length of the image
         for (int i = 0; i < pixels[0].length; i++) {
+        	
+        	// sets the top row to black
         	pixels[0][i] = new Color (0, 0, 0);
+        	// sets bottom row to black
         	pixels[pixels.length-1][i] = new Color (0, 0, 0);
         }
+        
+        // goes down the height of the image
         for (int i = 0; i < pixels.length; i++) {
+        	
+        	// sets first column to black
         	pixels[i][0]= new Color (0, 0, 0);
+        	// sets last column to black
         	pixels[i][pixels[0].length-1] = new Color (0, 0, 0);
         }
-        
+    }
+    
+    // turns the entire image black and white
+    public void blackWhite() {
+    	
+    	outputName = "blackWhite_" + outputName;
+    	
+    	// two for loops to go through each pixel
+    	for (int i = 0; i < pixels.length; i++) {
+        	
+        	for (int j = 0; j < pixels[i].length; j++) {
+        	
+        		// checks if the pixels color is closer to black
+        		if ((distance(pixels[i][j], Color.BLACK)) < (distance(pixels[i][j], Color.WHITE))) {
+        			
+        			// changes pixels color to black
+        			pixels[i][j] = Color.BLACK;
+        		}
+        		
+        		// if pixels color is closer to white or right in the middle
+        		else {
+        			
+        			// changes pixels color to white
+        			pixels[i][j] = Color.WHITE;
+        		}
+        	}
+        }
+    }
+    
+    // crops square based on user's input for dimensions (dimension x dimension)
+    // turns rest of image white
+    // starts at top left corner
+    public void crop(int dimension) {
+    	
+    	outputName = "cropped_" + outputName;
+    	
+    	// temp 2d array to add certain pixels colors to, others stay white
+    	Color[][] cropped = new Color[pixels.length][pixels[0].length];
+    	
+    	// two for loops to go through each pixel
+    	for (int i = 0; i < cropped.length; i++) {
+    		
+    		for (int j = 0; j < cropped[0].length; j++) {
+    			
+    			// checks if i and j are still within the dimension x dimension range
+    			if (i < dimension && j < dimension) {
+    				
+    				// adds the original images pixel colors to cropped temp 2d array
+    				cropped[i][j] = pixels[i][j];
+    			}
+    			
+    			// if i and j are beyond the cropped range
+    			else {
+    				
+    				// turns the pixels to the color white
+    				cropped[i][j] = Color.WHITE;
+    			}
+    		}
+    	}
+    	// sets the image to the temporary cropped image
+    	pixels = cropped;
     }
     
     
@@ -309,7 +407,7 @@ public class PhotoshopFiller extends Component {
 			
 			// runs the manipulations determined by the user
 			System.out.println("Enter the manipulations you would like to run on the image.\nYour "
-					+ "choices are: brighten, flip, negate, blur, edge, or simplify.\nEnter each "
+					+ "choices are: brighten, flip, negate, blur, edge, simplify, blackWhite, or crop.\nEnter each "
 					+ "manipulation you'd like to run, then type in 'done'.");
 			Scanner in = new Scanner(System.in);
 			String action = in.next().toLowerCase();
@@ -325,6 +423,12 @@ public class PhotoshopFiller extends Component {
 		    				System.out.println("enter \"h\" to flip horizontally, anything else to flip vertically.");
 		        			Method m = getClass().getDeclaredMethod(action, boolean.class);
 		        			m.invoke(this, in.next().equals("h"));
+		    			}
+		    			else if (action.equals("crop")) {
+		    				System.out.println("enter an integer for the dimensions of the cropped image (no negatives)");
+		    				int dimension = in.nextInt();
+		        			Method m = getClass().getDeclaredMethod(action, int.class);
+		        			m.invoke(this, dimension);
 		    			}
 		    			else {
 		        			Method m = getClass().getDeclaredMethod(action);
