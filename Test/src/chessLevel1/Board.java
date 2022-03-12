@@ -12,7 +12,6 @@ public class Board {
 	// second row is the black king.
 	private int[][] kingPositions = new int[2][2];
 	
-
 	// represents the entire board - make sure to initialize!.
 	private Piece[][] board;
 	
@@ -21,13 +20,15 @@ public class Board {
 		// loads the images into a map
 		HashMap<String, Image> images = loadImages();
 		
-		// initializes all the pieces with images
+		
+		// initializes all the pieces with images and positions on board
 		
 		board = new Piece [8][8];
 		
 		// kings
 		board[4][7] = new King(1, images.get("BlackKing"));
 		board[4][0] = new King(0, images.get("WhiteKing"));
+		// array to keep track of kings positions for check/checkmate
 		kingPositions[0] = new int[]{4, 0};
 		kingPositions[1] = new int[] {4, 7};
 	
@@ -54,19 +55,22 @@ public class Board {
 		board[5][0] = new Bishop(0, images.get("WhiteBishop"));
 		
 		// pawn
+		// creates line of black pawns
 		for (int i = 0; i < 8; i++) {
 			board[i][6] = new Pawn(1, images.get("BlackPawn"));
 		}
-		
+		// line of white pawns
 		for (int i = 0; i < 8; i++) {
 			board[i][1] = new Pawn(0, images.get("WhitePawn"));
 		}
 		
 		// empty
+		// loops through entire board
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
+				// creates empty squares wherever there is no piece
 				if (board[i][j] == null) {
-				board[i][j] = new Empty();
+					board[i][j] = new Empty();
 				}
 			}
 		}
@@ -79,17 +83,23 @@ public class Board {
 		int sw = Chess.SQUARE_WIDTH;	// the width of each square on the board
 		
 		// outlines each space
+		// loops through entire board of squares
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
+				// colors every other square
 				if (i%2 == j%2) {
+					// sets and fills square with green
 					g.setColor(new Color(0, 100, 0));
 					g.fillRect(((sw) * j) - board.length/2, (sw) * i, sw, sw);
 				}
 				else {
+					// sets and fills square with white
 					g.setColor(new Color(255, 255, 255));
 					g.fillRect(((sw) * j) - board.length/2, (sw) * i, sw, sw);
 				}
+				// checks if square is the last clicked square
 				if (board[i][j] == curr) {
+					// colors last clicked square yellow
 					g.setColor(Color.YELLOW);
 					g.fillRect(((sw) * j) - board.length/2, (sw) * i, sw, sw);
 				}
