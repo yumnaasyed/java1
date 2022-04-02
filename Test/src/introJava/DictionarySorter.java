@@ -86,6 +86,7 @@ public class DictionarySorter {
 		}
 	}
 	
+	
 	public static void main(String[] args) throws IOException {
 		new DictionarySorter();
 	}
