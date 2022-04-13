@@ -36,6 +36,10 @@ public class Room {
 		return total;
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
 	public int getHeight() {
 		return height;
 	}
@@ -48,11 +52,39 @@ public class Room {
 		return width;
 	}
 	
-	
-	
-	
-	
-	public static void main(String[] args) {
-
+	public ArrayList<Material> getMaterial() {
+		return materials;
 	}
+	
+	public ArrayList<Integer> getAmountMaterials() {
+		return amountMaterials;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	
+	public void setLength(int length) {
+		this.length = length;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public void setMaterial(ArrayList<Material> materials) {
+		this.materials = materials;
+	}
+	
+	public void setAmountMaterial(ArrayList<Integer> amountMaterials) {
+		this.amountMaterials = amountMaterials;
+	}
+	
+	
+	
+
 }
