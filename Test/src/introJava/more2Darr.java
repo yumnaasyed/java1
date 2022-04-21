@@ -64,7 +64,6 @@ public class more2Darr {
 		}
 		return sum;
 		
-		
 	}
 	
 	
@@ -122,7 +121,7 @@ public class more2Darr {
 	
 	public static void main(String[] args) {
 		
-		//display(mByN(6, 5));
+		display(mByN(6, 5));
 		
 		//System.out.print(max(new double[][] {{5.6, 2.3}, {2.8, 4.2, 5.8}, {7.6, 6.7, 5.5}}));
 

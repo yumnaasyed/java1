@@ -14,6 +14,10 @@ public class ShapeRunner {
 		for (int i = 0; i < shapes.length; i++) {
 			shapes[i].move(3, 3);
 		}
+		
+		//shapes[0].move(3, 3);
+		//shapes[1].move(3, 3);
+		//shapes[2].move(3, 3);
 	}
 	
 	// fill in your shape list here

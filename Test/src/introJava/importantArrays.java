@@ -59,12 +59,16 @@ public class importantArrays {
 	
 	public static void main(String[] args) {
 		
-		int[] array = {6, 5, 4, 3, 2, 1, 0};
+		//int[] array = {6, 5, 4, 3, 2, 1, 0};
 		
 		
-		char[] ans = merge(new char[] {'e', 'h'}, new char[] {'j', 'l', 'u', 'y'});
+		//char[] ans = merge(new char[] {'e', 'h'}, new char[] {'j', 'l', 'u', 'y'});
 		
-		System.out.println(Arrays.toString(ans));
+		//String[] arr = reverse(new String[] {"hi", "hello", "bye"});
+		
+		//System.out.println(Arrays.toString(arr));
+		
+		
 		
 		
 

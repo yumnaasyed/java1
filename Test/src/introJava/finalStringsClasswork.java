@@ -12,12 +12,10 @@ public class finalStringsClasswork {
 			}
 		}
 		return a;
-		
 	}
 	
 	public static void main(String[] args) {
 		System.out.println(relativeMax(new double[] {5.5, 6.3, 4.4, 9.2, 7.7}));
 
 	}
-	
 }

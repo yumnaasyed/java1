@@ -95,11 +95,11 @@ public class scannerConditionals {
 				
 		int fullFeildGoals = fieldGoals / 3;
 		
-		if () {
+		//if () {
 			
 		}
 		
-	}
+	//}
 	
 	
 	
@@ -148,7 +148,7 @@ public class scannerConditionals {
 		
 		runner.mathOperators();
 		
-		runner.football();
+		//runner.football();
 		
 		runner.greatestDigit();
 

@@ -44,6 +44,12 @@ public class Garage {
 		cars[i].drive(n);
 	}
 	
+	public String toString() {
+		
+		for (Car car: cars) {
+			return car.toString();
+		}
+	}
 	
 	
 	

@@ -315,7 +315,7 @@ public class PhotoshopFiller extends Component {
     }
     
     // turns the entire image black and white
-    public void blackWhite() {
+    public void bw() {
     	
     	outputName = "blackWhite_" + outputName;
     	
@@ -387,8 +387,8 @@ public class PhotoshopFiller extends Component {
 
     public void run() {
     	JFileChooser fc = new JFileChooser();
-//		File workingDirectory = new File(System.getProperty("user.dir")+System.getProperty("file.separator")+ "Images");
-//		fc.setCurrentDirectory(workingDirectory);
+		File workingDirectory = new File(System.getProperty("user.dir")+System.getProperty("file.separator")+ "Images");
+		fc.setCurrentDirectory(workingDirectory);
 		fc.showOpenDialog(null);
 		File my_file = fc.getSelectedFile();
 		if (my_file == null)
@@ -407,7 +407,7 @@ public class PhotoshopFiller extends Component {
 			
 			// runs the manipulations determined by the user
 			System.out.println("Enter the manipulations you would like to run on the image.\nYour "
-					+ "choices are: brighten, flip, negate, blur, edge, simplify, blackWhite, or crop.\nEnter each "
+					+ "choices are: brighten, flip, negate, blur, edge, simplify, bw, or crop.\nEnter each "
 					+ "manipulation you'd like to run, then type in 'done'.");
 			Scanner in = new Scanner(System.in);
 			String action = in.next().toLowerCase();

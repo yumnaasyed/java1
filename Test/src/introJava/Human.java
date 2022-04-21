@@ -51,6 +51,16 @@ public class Human {
 		height += foodAmount/100;
 	}
 	
+	public int getHeight() {
+		return height;
+	}
+	
+	public boolean isTaller(Human other) {
+		
+		return height > other.getHeight();
+		
+	}
+	
 	
 	
 	public static void main(String[] args) {

@@ -74,8 +74,8 @@ public class nestedLoops {
 		
 		//runner.aToz();
 		//runner.multTable();
-		runner.prime(10);
-		//runner.stars(8);
+		//runner.prime(10);
+		runner.stars(8);
 		//runner.pascalsTriangle();
 	}
 	
