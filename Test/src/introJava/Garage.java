@@ -49,6 +49,7 @@ public class Garage {
 		for (Car car: cars) {
 			return car.toString();
 		}
+		return "";
 	}
 	
 	

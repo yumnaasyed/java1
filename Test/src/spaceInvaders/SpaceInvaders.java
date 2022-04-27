@@ -1,4 +1,7 @@
-		package spaceInvaders;
+package spaceInvaders;
+
+// Yumna Syed
+// Special Feature: shields on the screen which eliminate all lasers it collides with. 
 
 // Space Invaders Filler Code by Mr. David
 
@@ -20,7 +23,7 @@ public class SpaceInvaders {
 			LASERWIDTH = 8, LASERHEIGHT = 25, PLAYERENEMYWIDTH = 50, PLAYERENEMYHEIGHT = 35, NUMSHIELDS = 3;
 	
 	// determines the difficulty. The closer to 1.0, the easier the game 
-	private final double DIFFICULTY = .99;
+	private final double DIFFICULTY = .991;
 	
 	// our list of aliens
 	private ArrayList<SpaceThing> aliens = new ArrayList<SpaceThing>();
@@ -36,7 +39,7 @@ public class SpaceInvaders {
 	private SpaceThing player;
 	
 	// the current speed of the player as well as their remaining lives and strength of shield at the start
-	private int lives = 30, playerSpeed = 0; //shieldStrength = 2;
+	private int lives = 5, playerSpeed = 0;
 	
 	// booleans to keep track of the game's progress
 	private boolean lost = false, paused = true;
@@ -47,6 +50,7 @@ public class SpaceInvaders {
 	// and randomly shoots lasers from the aliens
 	public void move() {
 		
+		// all objects only move if game is in play
 		if (!won && !lost) {
 		
 			// loops through every alien
@@ -92,6 +96,7 @@ public class SpaceInvaders {
 					alienLasers.remove(i);
 				}
 			}
+			
 			// moves player by player speed right and left
 			player.moveX(playerSpeed);
 			
@@ -128,19 +133,8 @@ public class SpaceInvaders {
 				lost = true;
 				paused = true;
 			}
-			// loops through every player laser in list
-			for (int j = 0; j < playerLasers.size(); j++) {
-				// checks if two lasers from opposing sides intersect
-				if (alienLasers.get(i).intersects(playerLasers.get(j))) {
-					// removes both lasers from list
-					alienLasers.remove(i);
-					playerLasers.remove(j);
-					// stops searching
-					i--;
-					break;
-				}
-			}
 		}
+		
 		// loops through every alien
 		for (int i = 0; i < aliens.size(); i++) {
 			// loops through every player laser
@@ -156,6 +150,7 @@ public class SpaceInvaders {
 				}
 			}
 		}
+		
 		// loops through every alien in list
 		for (int i = 0; i < aliens.size(); i++) {
 			// checks if an alien had passed the player's y value
@@ -165,6 +160,7 @@ public class SpaceInvaders {
 				paused = true;
 			}
 		}	
+		
 		// loops through every shield in list
 		for (int i = 0; i < NUMSHIELDS; i++) {
 			// loops through every laser in list of player
@@ -178,6 +174,10 @@ public class SpaceInvaders {
 					break; 
 				}
 			}
+		}
+		
+		// loops through every shield in list
+		for (int i = 0; i < NUMSHIELDS; i++) {
 			// loops through every laser in list of aliens
 			for (int j = 0; j < alienLasers.size(); j++) {
 				// checks if alien laser hits shield
@@ -190,6 +190,7 @@ public class SpaceInvaders {
 				}
 			}
 		}
+		
 		// checks if list of aliens is empty
 		if (aliens.isEmpty()) {
 			// player wins and game is paused
@@ -250,7 +251,7 @@ public class SpaceInvaders {
 		}
 		// draws players lasers
 		for (int i = 0; i < playerLasers.size(); i++) {
-			playerLasers.get(i).draw(g, Color.BLUE);;
+			playerLasers.get(i).draw(g, Color.RED);;
 		}
 		// draws space things
 		for (int i = 0; i < aliens.size(); i++) {

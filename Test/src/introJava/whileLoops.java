@@ -112,11 +112,11 @@ public class whileLoops {
 		
 		whileLoops runner = new whileLoops();
 		
-		//runner.numbersBetween(3, 7);
+		runner.numbersBetween(3, 7);
 		
-		//runner.baseCoefficient(2.0, 3.0);
+		runner.baseCoefficient(2.0, 3.0);
 		
-		//runner.squareRoot();
+		runner.squareRoot();
 		
 		runner.largest(2);
 			

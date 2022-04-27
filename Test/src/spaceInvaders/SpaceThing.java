@@ -1,7 +1,7 @@
 package spaceInvaders;
 
 // SpaceThing class for SpaceInvaders by Mr. David
-// no need to edit this class
+// Yumna
 
 import java.awt.Graphics;
 import java.awt.Image;

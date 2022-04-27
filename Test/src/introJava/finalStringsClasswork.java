@@ -1,7 +1,7 @@
 package introJava;
 
 import java.util.ArrayList;
-
+//classwork 4/8
 public class finalStringsClasswork {
 	
 	public static ArrayList<Integer> relativeMax(double[] ds) {
@@ -17,5 +17,7 @@ public class finalStringsClasswork {
 	public static void main(String[] args) {
 		System.out.println(relativeMax(new double[] {5.5, 6.3, 4.4, 9.2, 7.7}));
 
+		
+	
 	}
 }
