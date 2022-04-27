@@ -47,7 +47,7 @@ public class MoreWithMaps {
 
 		comps.put("tesla", 1000);
 		
-		runner.stock(comps, null);
+		runner.stock(comps, "hfsf");
 
 		 
 
