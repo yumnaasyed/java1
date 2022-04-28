@@ -30,8 +30,13 @@ public class MoreWithMaps {
 		}
 	}
 	
-	public void doubleZeroNine(HashMap<String, String> w) {
-		
+	public void doubleZeroNine(HashMap<String, String> w, String name) {
+		String n = name;
+		String curr = w.get(name);
+		System.out.println(name + " --> " + w.get(name));
+		while (!name.equals(curr)) {
+			System.out.print(curr + " --> " + w.get(curr));
+		}
 	}
 	
 	public static void main(String[] args) {
@@ -47,7 +52,7 @@ public class MoreWithMaps {
 
 		comps.put("tesla", 1000);
 		
-		runner.stock(comps, "hfsf");
+		//runner.stock(comps, "hfsf");
 
 		 
 
@@ -60,6 +65,8 @@ public class MoreWithMaps {
 		people.put("Anika", "Ryan");
 
 		people.put("Yumna", "Cooper");
+		
+		runner.doubleZeroNine(people, "Ryan");
 
 	}
 	

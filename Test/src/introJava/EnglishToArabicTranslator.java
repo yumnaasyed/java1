@@ -1,5 +1,8 @@
 package introJava;
 
+// EnglishToArabicTranslator
+
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,7 +14,6 @@ public class EnglishToArabicTranslator {
 	
 	private HashMap<String, String> words = new HashMap<String, String>();
 	
-	
 	public void translate() {
 		
 		try {
@@ -20,7 +22,6 @@ public class EnglishToArabicTranslator {
 			for (String line = in.readLine(); line != null; line = in.readLine()) {
 				words.put(line, in.readLine());
 			}
-		
 			in.close();
 		}
 		catch (FileNotFoundException e) {
@@ -43,6 +44,5 @@ public class EnglishToArabicTranslator {
 		while (true) {
 			System.out.println(runner.toString(s.next()));
 		}
-
 	}
 }
