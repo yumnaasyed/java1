@@ -7,7 +7,7 @@ public class adventureGame {
 	
 	public static void startGame(String playerName, int energyLeft, Scanner input) {
 		
-		System.out.println("Hi " + playerName + "! It is 7AM and you are getting up for school. It is quite chilly outside, do you turn the heat up? Yes or No");
+		System.out.println("Hi " + playerName + "! It is 7AM and you are getting up for school. It is quite chilly outside, do you turn the heat up for 3000 watts? Yes or No");
 		
 		while (true) {
 			String answer = input.nextLine();
@@ -26,7 +26,8 @@ public class adventureGame {
 	
 	public static void Transport(int energyLeft, Scanner input, String playerName) {
 		
-		System.out.println("It's time to head out. Do you want to take the bus or a car?");
+		System.out.println("You have " + energyLeft + " watts left for the day.");
+		System.out.println("It's time to head out. Do you want to take the bus for 700 watts or a car for 3000 watts?");
 		
 		while (true) {
 			String answer = input.nextLine();
@@ -46,7 +47,8 @@ public class adventureGame {
 	
 	public static void carStops(int energyLeft, Scanner input, String playerName) {
 		
-		System.out.println("Your car has stopped on the side of the road! Do you: A. restart or take B. public transport? ");
+		System.out.println("You have " + energyLeft + " watts left for the day.");
+		System.out.println("Your car has stopped on the side of the road! Do you: A. restart for 3000 watts or take B. public transport for 2000 watts? ");
 		
 		while (true) {
 			String answer = input.nextLine();
@@ -66,7 +68,8 @@ public class adventureGame {
 	
 	public static void classElectronics(int energyLeft, Scanner input, String playerName) {
 		
-		System.out.println("You get to class and notice your phone is almost dead and you want it charged for the rest of the day. Do you charge your phone? Yes or No");
+		System.out.println("You have " + energyLeft + " watts left for the day.");
+		System.out.println("You get to class and notice your phone is almost dead and you want it charged for the rest of the day. Do you charge your phone for 3000 watts? Yes or No");
 		
 		
 		while (true) {
@@ -87,7 +90,8 @@ public class adventureGame {
 	
 	public static void lunch(int energyLeft, Scanner input, String playerName) {
 		
-		System.out.println("you are eating your lunch when you notice someone tried to throw their wrappers away but missed the can. Do you: A. leave your friends and throw away the trash yourself or B. wait for someone else to do it?");
+		System.out.println("You have " + energyLeft + " watts left after the day has ended.");
+		System.out.println("you are eating your lunch when you notice someone tried to throw their wrappers away but missed the can. Do you: A. leave your friends and throw away the trash yourself using 500 watts or B. wait for someone else to do it for 2000 watts?");
 		
 		while (true) {
 			String answer = input.nextLine();
@@ -107,13 +111,25 @@ public class adventureGame {
 	
 	public static void endOfDay(int energyLeft, Scanner input, String playerName) {
 		
+		System.out.println("You have " + energyLeft + " watts left for the day.");
 		System.out.print("You made it home. ");
 		
 		if (energyLeft <= 0) {
 			gameOver(energyLeft, input, playerName);
 		}
 		else {
-			System.out.print("And you made it through the day without using more than the average amount of energy! You win!");
+			System.out.println("And you made it through the day without using more than the average amount of energy! You win! ");
+			System.out.println("If you would like to play again and make different decisions, type 'yes'");
+			
+			while (true) {
+				String ans = input.nextLine();
+				
+				if (ans.equalsIgnoreCase("yes")) {
+					energyLeft = 12000;
+					startGame(playerName, energyLeft, input);
+					break;
+				}
+			}
 		}
 		
 	}
